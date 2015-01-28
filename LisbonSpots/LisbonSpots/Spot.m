@@ -23,6 +23,21 @@
 +(instancetype)spotWithJSONDict:(NSDictionary *)JSONDict {
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *moc = appDelegate.managedObjectContext;
+
+    
+    // Verificar se já está guardado
+    NSArray * array = [Spot fetchAllSpots];
+
+    // Para cada spot já guardado
+    for(Spot * spot in array)
+    {
+        // Ver se o identificador do novo já existe
+        if(spot.identifier == [[JSONDict valueForKey:@"id"] intValue])
+        {
+            //Se existir retornar o antigo.
+            return spot;
+        }
+    }
     
     Spot *newSpot = [NSEntityDescription insertNewObjectForEntityForName:@"Spot" inManagedObjectContext:moc];
     
