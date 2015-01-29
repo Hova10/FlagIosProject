@@ -29,7 +29,6 @@
     [_map addAnnotations:allAnnotations];
     
 }
-
 - (IBAction)changeMapType:(UISegmentedControl *)sender {
     
     switch (sender.selectedSegmentIndex) {
