@@ -50,6 +50,8 @@
         newSpot.desc = [JSONDict valueForKey:@"desc"];
         newSpot.latitude = [[JSONDict valueForKey:@"latitude"] doubleValue];
         newSpot.longitude = [[JSONDict valueForKey:@"longitude"] doubleValue];
+
+        newSpot.title = newSpot.name;
     }
     //Forçar o sync com o Coredata
     [appDelegate saveContext];
@@ -59,6 +61,26 @@
 +(NSArray *)fetchAllSpots {
     return [Spot fetchAllSpotsWithType:nil];
 }
+
+// Getter para coordinate
+-(CLLocationCoordinate2D) coordinate {
+    return CLLocationCoordinate2DMake(self.latitude, self.longitude);
+}
+
+
+// Pede todas as Annotations já existentes no Coredata
++(NSArray *)allAnnotations
+{
+    return [Spot fetchAllSpots];
+}
+
+// Construtor de Conveniência
++(instancetype)annotationWithCoord:(CLLocationCoordinate2D)coord
+                           andName:(NSString *)name
+{
+    return nil;
+}
+
 
 +(NSArray *)fetchAllSpotsWithType:(NSString *)type {
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
