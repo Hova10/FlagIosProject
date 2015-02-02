@@ -46,8 +46,8 @@
 
 - (IBAction)zoomMap:(UISlider *)sender {
     
-    float val = (1 - sender.value/(sender.maximumValue - sender.minimumValue)) * (sender.maximumValue - sender.minimumValue) + sender.minimumValue;
     
+    float val = sender.value * 1000;
     MKCoordinateRegion region =MKCoordinateRegionMakeWithDistance(_map.centerCoordinate, val, val);
     
     [_map setRegion:region animated:YES];

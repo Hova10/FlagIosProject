@@ -51,7 +51,6 @@
         newSpot.latitude = [[JSONDict valueForKey:@"latitude"] doubleValue];
         newSpot.longitude = [[JSONDict valueForKey:@"longitude"] doubleValue];
 
-        newSpot.title = newSpot.name;
     }
     //Forçar o sync com o Coredata
     [appDelegate saveContext];

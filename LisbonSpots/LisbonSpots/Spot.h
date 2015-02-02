@@ -12,9 +12,6 @@
 
 @interface Spot : NSManagedObject <MKAnnotation>
 
-@property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSString * subtitle;
-
 @property (nonatomic) int32_t identifier;
 @property (nonatomic, retain) NSString * type;
 @property (nonatomic, retain) NSString * name;
