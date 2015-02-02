@@ -8,9 +8,13 @@
 
 #import "DetailViewController.h"
 
+#import <AddressBook/AddressBook.h>
+
 @interface DetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UINavigationItem *titleBar;
+@property (weak, nonatomic) IBOutlet UITextView *descBox;
+@property (weak, nonatomic) IBOutlet UITextView *phoneBox;
 
 @end
 
@@ -24,6 +28,8 @@
     if(_spot != nil)
     {
         self.titleBar.title = _spot.name;
+        self.descBox.text = _spot.desc;
+        self.phoneBox.text = _spot.phone;
     }
 }
 
@@ -37,5 +43,9 @@
 
 }
 
+- (IBAction)addContact:(id)sender {
+
+
+}
 
 @end

@@ -8,19 +8,22 @@
 
 #import "MapViewController.h"
 
-@interface MapViewController ()
+@interface MapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) CLLocationManager *locManager;
+@property (weak, nonatomic) IBOutlet UISlider *zoomSlider;
 
 @end
 
 @implementation MapViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Instanciar o locManager
     _locManager = [[CLLocationManager alloc] init];
 
+    _locManager.delegate = self;
     // Pedir autorização para a localização (iOS 8)
     [_locManager requestAlwaysAuthorization];
     
@@ -55,6 +58,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)toggleLocation:(UISwitch *)sender {
+    _map.showsUserLocation = sender.isOn;
+}
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
+    
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(_map.userLocation.coordinate, _zoomSlider.value, _zoomSlider.value);
+    
+    [_map setRegion:region animated:YES];
 }
 
 

@@ -22,6 +22,8 @@
 		151B64FF1A78EB4200E2172D /* Spot.m in Sources */ = {isa = PBXBuildFile; fileRef = 151B64FE1A78EB4200E2172D /* Spot.m */; };
 		151B65021A78EBD500E2172D /* RestAUX.m in Sources */ = {isa = PBXBuildFile; fileRef = 151B65011A78EBD500E2172D /* RestAUX.m */; };
 		157D4AD71A80083E007CB613 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 157D4AD61A80083E007CB613 /* DetailViewController.m */; };
+		157D4AD91A8010F2007CB613 /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 157D4AD81A8010F2007CB613 /* phone.png */; };
+		157D4ADB1A80128A007CB613 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 157D4ADA1A80128A007CB613 /* AddressBook.framework */; };
 		15BED1481A7FFA0A001EC32F /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 15BED1471A7FFA0A001EC32F /* splash.png */; };
 		15BED14B1A7FFA5E001EC32F /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 15BED1491A7FFA5E001EC32F /* map.png */; };
 		15BED14C1A7FFA5E001EC32F /* marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 15BED14A1A7FFA5E001EC32F /* marker.png */; };
@@ -63,6 +65,8 @@
 		151B65011A78EBD500E2172D /* RestAUX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestAUX.m; sourceTree = "<group>"; };
 		157D4AD51A80083E007CB613 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		157D4AD61A80083E007CB613 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		157D4AD81A8010F2007CB613 /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
+		157D4ADA1A80128A007CB613 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		15BED1471A7FFA0A001EC32F /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		15BED1491A7FFA5E001EC32F /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		15BED14A1A7FFA5E001EC32F /* marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker.png; sourceTree = "<group>"; };
@@ -73,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				157D4ADB1A80128A007CB613 /* AddressBook.framework in Frameworks */,
 				150773A71A7AC1CF00048FFB /* Foundation.framework in Frameworks */,
 				150773A51A7AC1BC00048FFB /* CoreLocation.framework in Frameworks */,
 				150773A11A7AC16000048FFB /* MapKit.framework in Frameworks */,
@@ -92,6 +97,7 @@
 		150773A81A7AC1DD00048FFB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				157D4ADA1A80128A007CB613 /* AddressBook.framework */,
 				150773A61A7AC1CF00048FFB /* Foundation.framework */,
 				150773A41A7AC1BC00048FFB /* CoreLocation.framework */,
 				150773A01A7AC16000048FFB /* MapKit.framework */,
@@ -145,6 +151,7 @@
 		151B64D41A78E97000E2172D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				157D4AD81A8010F2007CB613 /* phone.png */,
 				15BED1491A7FFA5E001EC32F /* map.png */,
 				15BED14A1A7FFA5E001EC32F /* marker.png */,
 				15BED1471A7FFA0A001EC32F /* splash.png */,
@@ -254,6 +261,7 @@
 				151B64E31A78E97100E2172D /* Main.storyboard in Resources */,
 				151B64E81A78E97100E2172D /* LaunchScreen.xib in Resources */,
 				15BED1481A7FFA0A001EC32F /* splash.png in Resources */,
+				157D4AD91A8010F2007CB613 /* phone.png in Resources */,
 				151B64E51A78E97100E2172D /* Images.xcassets in Resources */,
 				15BED14B1A7FFA5E001EC32F /* map.png in Resources */,
 				15BED14C1A7FFA5E001EC32F /* marker.png in Resources */,
