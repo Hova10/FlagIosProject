@@ -21,6 +21,10 @@
 		151B64F41A78E97100E2172D /* LisbonSpotsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 151B64F31A78E97100E2172D /* LisbonSpotsTests.m */; };
 		151B64FF1A78EB4200E2172D /* Spot.m in Sources */ = {isa = PBXBuildFile; fileRef = 151B64FE1A78EB4200E2172D /* Spot.m */; };
 		151B65021A78EBD500E2172D /* RestAUX.m in Sources */ = {isa = PBXBuildFile; fileRef = 151B65011A78EBD500E2172D /* RestAUX.m */; };
+		157D4AD71A80083E007CB613 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 157D4AD61A80083E007CB613 /* DetailViewController.m */; };
+		15BED1481A7FFA0A001EC32F /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 15BED1471A7FFA0A001EC32F /* splash.png */; };
+		15BED14B1A7FFA5E001EC32F /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 15BED1491A7FFA5E001EC32F /* map.png */; };
+		15BED14C1A7FFA5E001EC32F /* marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 15BED14A1A7FFA5E001EC32F /* marker.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,11 @@
 		151B64FE1A78EB4200E2172D /* Spot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spot.m; sourceTree = "<group>"; };
 		151B65001A78EBD500E2172D /* RestAUX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestAUX.h; sourceTree = "<group>"; };
 		151B65011A78EBD500E2172D /* RestAUX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestAUX.m; sourceTree = "<group>"; };
+		157D4AD51A80083E007CB613 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		157D4AD61A80083E007CB613 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		15BED1471A7FFA0A001EC32F /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
+		15BED1491A7FFA5E001EC32F /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
+		15BED14A1A7FFA5E001EC32F /* marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +121,8 @@
 		151B64D31A78E97000E2172D /* LisbonSpots */ = {
 			isa = PBXGroup;
 			children = (
+				157D4AD51A80083E007CB613 /* DetailViewController.h */,
+				157D4AD61A80083E007CB613 /* DetailViewController.m */,
 				151B64D81A78E97000E2172D /* AppDelegate.h */,
 				151B64D91A78E97000E2172D /* AppDelegate.m */,
 				151B64DE1A78E97100E2172D /* MapViewController.h */,
@@ -134,6 +145,9 @@
 		151B64D41A78E97000E2172D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				15BED1491A7FFA5E001EC32F /* map.png */,
+				15BED14A1A7FFA5E001EC32F /* marker.png */,
+				15BED1471A7FFA0A001EC32F /* splash.png */,
 				151B64D51A78E97000E2172D /* Info.plist */,
 				151B64D61A78E97000E2172D /* main.m */,
 			);
@@ -239,7 +253,10 @@
 			files = (
 				151B64E31A78E97100E2172D /* Main.storyboard in Resources */,
 				151B64E81A78E97100E2172D /* LaunchScreen.xib in Resources */,
+				15BED1481A7FFA0A001EC32F /* splash.png in Resources */,
 				151B64E51A78E97100E2172D /* Images.xcassets in Resources */,
+				15BED14B1A7FFA5E001EC32F /* map.png in Resources */,
+				15BED14C1A7FFA5E001EC32F /* marker.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +277,7 @@
 				151B64FF1A78EB4200E2172D /* Spot.m in Sources */,
 				151B64DA1A78E97000E2172D /* AppDelegate.m in Sources */,
 				151B65021A78EBD500E2172D /* RestAUX.m in Sources */,
+				157D4AD71A80083E007CB613 /* DetailViewController.m in Sources */,
 				1507739F1A7AC04000048FFB /* ListTableViewController.m in Sources */,
 				151B64DD1A78E97100E2172D /* LisbonSpots.xcdatamodeld in Sources */,
 				151B64E01A78E97100E2172D /* MapViewController.m in Sources */,

@@ -7,6 +7,8 @@
 //
 
 #import "ListTableViewController.h"
+#import "Spot.h"
+#import "DetailViewController.h"
 
 @interface ListTableViewController ()
 
@@ -17,11 +19,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    _bares = [NSMutableArray array];
+    _restaurantes = [NSMutableArray array];
+    _clubes = [NSMutableArray array];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    // buscar todos os spots
+    NSArray * spots = [Spot fetchAllSpots];
+    
+    // Para cada spot
+    for(Spot * spot in spots)
+    {
+        
+        // Adicionar se pertencer à secção
+
+        if([spot.type isEqualToString:@"restaurant"])
+            [_restaurantes addObject:spot];
+        else if([spot.type isEqualToString:@"club"])
+            [_clubes addObject:spot];
+        else if([spot.type isEqualToString:@"bar"])
+            [_bares addObject:spot];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,26 +49,84 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
+ 
+    // vai buscar a secção e devolve o numero de elementos
+    NSMutableArray * sectionArray  = [self getSection:section];
+    if(sectionArray != nil)
+        return [sectionArray count];
     return 0;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+-(NSMutableArray*)getSection:(NSInteger)section
+{
+    // escolhe a secção correspondente
+    switch (section) {
+        case 0:
+            return _restaurantes;
+            break;
+        case 1:
+            return _bares;
+            break;
+        case 2:
+            return _clubes;
+            break;
+        default:
+            break;
+    }
+    return nil;
+}
+
+-(Spot*)getSpotAt:(NSIndexPath*)path
+{
+    // Ir buscar a secção
+    NSMutableArray * section = [self getSection:path.section];
+
+    // se existir a secção e tiver o elemento
+    if(section != nil && path.row < [section count])
+    {
+        return (Spot*)[section objectAtIndex:path.row];
+    }
     
-    // Configure the cell...
+    // se não
+    return nil;
+        
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    Spot * spot = [self getSpotAt:indexPath];
+    
+    cell.textLabel.text = spot.name;
     
     return cell;
 }
-*/
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    switch (section) {
+        case 0:
+            return @"Restaurantes";
+            break;
+        case 1:
+            return @"Bares";
+            break;
+        case 2:
+            return @"Clubes";
+            break;
+        default:
+            break;
+    }
+    return @"";
+
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -87,14 +162,22 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+    
+    // Ir buscar próximo controlador e dar-lhe o Spot clicado
+    DetailViewController *detailVC = [segue destinationViewController];
+    
+    // Ir buscar index seleccionado
+    NSIndexPath *selectedIndex = [self.tableView indexPathForSelectedRow];
+    
+    // Ir buscar e atribuir spot
+    Spot * spot = [self getSpotAt:selectedIndex];
+    detailVC.spot = spot;
 }
-*/
+
 
 @end

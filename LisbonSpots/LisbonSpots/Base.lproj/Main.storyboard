@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--Map View Controller-->
+        <!--Map-->
         <scene sceneID="3SS-yo-OKi">
             <objects>
                 <viewController id="tSe-03-eA0" customClass="MapViewController" sceneMemberID="viewController">
@@ -56,7 +56,7 @@
                         <color key="backgroundColor" red="0.90980392156862744" green="0.15686274509803921" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.55294117649999996" green="0.050980392159999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="Muu-Th-USK"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map.png" id="Muu-Th-USK"/>
                     <connections>
                         <outlet property="map" destination="KVu-JQ-F2a" id="ucL-hP-4uY"/>
                     </connections>
@@ -86,7 +86,7 @@
             </objects>
             <point key="canvasLocation" x="-36" y="161"/>
         </scene>
-        <!--List Table View Controller-->
+        <!--Details-->
         <scene sceneID="Ozj-Bc-FdV">
             <objects>
                 <tableViewController id="S37-8Q-cWe" customClass="ListTableViewController" sceneMemberID="viewController">
@@ -101,19 +101,81 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="fmv-8y-UXy">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fmv-8y-UXy" id="0gB-oQ-Cge">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="uxC-dK-bNc" kind="modal" id="gAZ-Q6-334"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="S37-8Q-cWe" id="g3y-Is-cIk"/>
                             <outlet property="delegate" destination="S37-8Q-cWe" id="9YU-Wq-lpm"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" systemItem="downloads" id="nGe-Cp-8JQ"/>
+                    <tabBarItem key="tabBarItem" title="Details" image="marker.png" id="nGe-Cp-8JQ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hkV-P0-M6W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="411" y="474"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="R2c-SB-373">
+            <objects>
+                <viewController id="uxC-dK-bNc" customClass="DetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rto-ZU-hKn"/>
+                        <viewControllerLayoutGuide type="bottom" id="HMT-t1-YOs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lVh-QK-mtl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5r6-ti-Jld">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="Zhe-dS-4aM">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" id="b8K-WG-D2m"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="titleBar" destination="Zhe-dS-4aM" id="UK6-Hc-7bH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1J0-is-qZ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="875" y="474"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="C79-JH-GAU">
+            <objects>
+                <viewController id="wGa-Fo-d85" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F4a-mU-JXm"/>
+                        <viewControllerLayoutGuide type="bottom" id="5vY-gr-Pfq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="u8Y-u2-yFm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZTi-HM-uL8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
+    <resources>
+        <image name="map.png" width="32" height="32"/>
+        <image name="marker.png" width="32" height="32"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
