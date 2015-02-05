@@ -11,7 +11,12 @@
 #import <MapKit/MapKit.h>
 
 @interface Spot : NSManagedObject <MKAnnotation>
-
+{
+    NSString * _title;
+    NSString * _subtitle;
+    float _km;
+    
+}
 @property (nonatomic) int32_t identifier;
 @property (nonatomic, retain) NSString * type;
 @property (nonatomic, retain) NSString * name;
@@ -19,6 +24,7 @@
 @property (nonatomic, retain) NSString * desc;
 @property (nonatomic) double latitude;
 @property (nonatomic) double longitude;
+@property (nonatomic) float km;
 
 
 //Construtor que cria um spot no Coredata, recebendo um JSONDict como argumento
@@ -27,5 +33,7 @@
 //Métodos que devolvem instâncias de Spot
 +(NSArray *)fetchAllSpots;
 +(NSArray *)fetchAllSpotsWithType:(NSString *)type;
+-(void)setDistance:(float)latitude longitude:(float)longitude;
+
 
 @end

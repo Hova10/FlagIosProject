@@ -20,6 +20,10 @@
 @dynamic latitude;
 @dynamic longitude;
 
+@synthesize title = _title;
+@synthesize subtitle = _subtitle;
+@synthesize km = _km;
+
 +(instancetype)spotWithJSONDict:(NSDictionary *)JSONDict {
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *moc = appDelegate.managedObjectContext;
@@ -35,6 +39,8 @@
         if(spot.identifier == [[JSONDict valueForKey:@"id"] intValue])
         {
             //Se existir retornar o antigo.
+            // fazer set do titulo e subtitulo para aparecer no mapa
+            [spot setTitle:spot.name subtitle:@"??? km"];
             return spot;
         }
     }
@@ -50,11 +56,34 @@
         newSpot.desc = [JSONDict valueForKey:@"desc"];
         newSpot.latitude = [[JSONDict valueForKey:@"latitude"] doubleValue];
         newSpot.longitude = [[JSONDict valueForKey:@"longitude"] doubleValue];
-
+        
+        // fazer set do titulo e subtitulo para aparecer no mapa
+        [newSpot setTitle:newSpot.name subtitle:@"??? km"];
     }
     //Forçar o sync com o Coredata
     [appDelegate saveContext];
     return newSpot;
+}
+
+-(void)setDistance:(float)latitude longitude:(float)longitude
+{
+    //http://stackoverflow.com/questions/9108208/fastest-way-to-calculate-the-distance-between-two-cgpoints
+
+    //http://stackoverflow.com/questions/1253499/simple-calculations-for-working-with-lat-lon-km-distance
+    
+    float latitudeParaKm = 110.54f;
+    
+    float dx = (self.longitude-longitude) * latitudeParaKm ; // (latitude * latitudeParaKm /1
+    
+    float longitudeParaKm = 111.320*cos(dx);
+
+    float dy = (self.latitude-latitude) * longitudeParaKm; // (longitude * longitudeParaKm /1
+
+    
+    float dist = sqrt(dx*dx + dy*dy);
+    
+    _subtitle = [NSString stringWithFormat:@"%f km", dist];
+    _km = dist;
 }
 
 +(NSArray *)fetchAllSpots {
@@ -64,6 +93,12 @@
 // Getter para coordinate
 -(CLLocationCoordinate2D) coordinate {
     return CLLocationCoordinate2DMake(self.latitude, self.longitude);
+}
+
+-(void)setTitle:(NSString*)title subtitle:(NSString*)subtitle
+{
+    _title = title;
+    _subtitle = subtitle;
 }
 
 
@@ -79,7 +114,6 @@
 {
     return nil;
 }
-
 
 +(NSArray *)fetchAllSpotsWithType:(NSString *)type {
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];

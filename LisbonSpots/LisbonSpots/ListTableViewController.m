@@ -19,12 +19,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     _bares = [NSMutableArray array];
     _restaurantes = [NSMutableArray array];
     _clubes = [NSMutableArray array];
     
     // buscar todos os spots
     NSArray * spots = [Spot fetchAllSpots];
+    
     
     // Para cada spot
     for(Spot * spot in spots)
@@ -60,6 +62,18 @@
     if(sectionArray != nil)
         return [sectionArray count];
     return 0;
+    
+    
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+    
+    header.textLabel.textColor = [UIColor colorWithRed:139.0/255 green:0.0/255 blue:10.0/255 alpha:1];
+    header.textLabel.font = [UIFont fontWithName:@"MarkerFelt-Wide" size:25.0];
+    CGRect headerFrame = header.frame;
+    header.textLabel.frame = headerFrame;
+    header.textLabel.textAlignment = NSTextAlignmentCenter;
 }
 
 -(NSMutableArray*)getSection:(NSInteger)section
@@ -100,16 +114,24 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     Spot * spot = [self getSpotAt:indexPath];
     
     cell.textLabel.text = spot.name;
     
+    cell.textLabel.textColor=[UIColor whiteColor];
+    cell.textLabel.font=[UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:20.0];
+    cell.detailTextLabel.font=[UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:20.0];
+    cell.detailTextLabel.textColor=[UIColor whiteColor];
+    
     return cell;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
     
     switch (section) {
         case 0:
@@ -123,6 +145,7 @@
             break;
         default:
             break;
+            
     }
     return @"";
 
@@ -179,5 +202,8 @@
     detailVC.spot = spot;
 }
 
-
+-(IBAction)goBackToList:(UIStoryboardSegue *)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end

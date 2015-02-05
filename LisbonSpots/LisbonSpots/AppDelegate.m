@@ -24,6 +24,12 @@
     [RestAUX getSpots];
     NSLog(@"%@", [Spot fetchAllSpots]);
     
+    [[UITabBar appearance] setTintColor:[UIColor redColor]];
+    
+    
+    
+    
+    
     return YES;
 }
 

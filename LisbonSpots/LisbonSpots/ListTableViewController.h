@@ -15,4 +15,6 @@
     NSMutableArray * _bares; // secção 1
     NSMutableArray * _clubes; // secção 2
 }
+
+-(IBAction)goBackToList:(UIStoryboardSegue *)sender;
 @end

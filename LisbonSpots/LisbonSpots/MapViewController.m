@@ -31,7 +31,49 @@
     NSArray *allAnnotations = [Spot fetchAllSpots];
     [_map addAnnotations:allAnnotations];
     
+    _map.delegate = self;
+    
+    float val = _map.region.span.latitudeDelta;
+    [_zoomSlider setValue:val animated:YES];
+    
 }
+
+//http://stackoverflow.com/questions/17402876/viewforannotation-didnt-get-called-ios-noob
+- (MKAnnotationView *)mapView:(MKMapView *)myMap viewForAnnotation:(id < MKAnnotation >)annotation
+{
+    // Criar um novo contentor de imagem
+    MKAnnotationView * av = [[MKAnnotationView alloc] init];
+    
+    // http://stackoverflow.com/questions/10751052/tapping-on-mkannotationview-doesnt-call-didselectannotationview-delegate
+    // Tentei por a não e não deu nada, pus a sim e funcionou
+    // Activar o popup de informação
+    [av setCanShowCallout:YES];
+    
+    // ir buscar o spot
+
+    
+    //http://stackoverflow.com/questions/1144629/in-objective-c-how-do-i-test-the-object-type
+    
+    if([annotation isKindOfClass:[Spot class]])
+    {
+        Spot * spot = (Spot*)annotation;
+        
+    // http://stackoverflow.com/questions/6808792/change-uiimage-from-mkannotation-in-the-mkmapview
+        // Mudar a imagem consoante o tipo
+        if([spot.type isEqualToString:@"restaurant"])
+            av.image = [UIImage imageNamed: @"back3.png"];
+        else if([spot.type isEqualToString:@"club"])
+            av.image = [UIImage imageNamed: @"back2.png"];
+        else if([spot.type isEqualToString:@"bar"])
+            av.image = [UIImage imageNamed: @"Back.png"];
+    }
+    else // imagem do utilizador
+    {
+        av.image = [UIImage imageNamed: @"location.png"];
+    }
+    return av;
+}
+
 - (IBAction)changeMapType:(UISegmentedControl *)sender {
     
     switch (sender.selectedSegmentIndex) {
@@ -62,14 +104,27 @@
 
 - (IBAction)toggleLocation:(UISwitch *)sender {
     _map.showsUserLocation = sender.isOn;
+
 }
+
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(_map.userLocation.coordinate, _zoomSlider.value, _zoomSlider.value);
     
     [_map setRegion:region animated:YES];
+    
+    // mudamos de posição actualizar todos os spots
+    NSArray * spots = [Spot fetchAllSpots];
+    
+    for(Spot * spot in spots)
+    {
+        [spot setDistance:_map.userLocation.coordinate.latitude longitude:_map.userLocation.coordinate.longitude];
+    }
+    
 }
+
+
 
 
 
