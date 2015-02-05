@@ -237,6 +237,7 @@
                     </view>
                     <connections>
                         <outlet property="descBox" destination="dXR-rM-8Nf" id="g0W-pU-aOG"/>
+                        <outlet property="imageBox" destination="7Pk-5h-yNB" id="lGH-KX-qpv"/>
                         <outlet property="kmBox" destination="f9L-LN-egc" id="5be-uv-JFG"/>
                         <outlet property="phoneBox" destination="Qpc-GD-WeJ" id="kRj-8n-ftS"/>
                         <outlet property="titleBar" destination="Zhe-dS-4aM" id="UK6-Hc-7bH"/>
